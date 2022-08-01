@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,13 +7,19 @@ using UnityEngine.InputSystem;
 
 public class KeyBoardController : MonoBehaviour
 {
+    public event EventHandler OnAttackEvent;
     public PlayerInput playerController;
+
     public float Horizontal { get; private set; }
     public float Vertical { get; private set; }
 
     public Vector2 Direction { get { return new Vector2(Horizontal, Vertical); } }
     public Vector2 rawInputMovement { get; set; }
-    
+
+    private void Start()
+    {
+        OnAttackEvent += Testing_OnSpacePressed;
+    }
 
     public void OnMovement(InputAction.CallbackContext value)
     {
@@ -22,11 +29,16 @@ public class KeyBoardController : MonoBehaviour
         rawInputMovement = new Vector2(Horizontal, Vertical);
     }
 
+   private void Testing_OnSpacePressed(object sender, EventArgs e)
+    {
+        Debug.Log("Attacked");
+    }
+
     public void OnAttack(InputAction.CallbackContext value)
     {
         if (value.started)
         {
-            Debug.Log("Attacked");
+            OnAttackEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 }
