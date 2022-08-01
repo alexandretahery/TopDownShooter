@@ -17,7 +17,6 @@ public class WeaponController : MonoBehaviour
 
     private void OnAttackPlayer(object sender, EventArgs e)
     {
-        Debug.Log("ATTACK from WEAPON CTRL");
-        Instantiate(Bullet, transform);
+        Instantiate(Bullet, transform.position, transform.rotation);
     }
 }
