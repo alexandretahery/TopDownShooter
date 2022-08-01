@@ -18,4 +18,11 @@ public class EventManager : MonoBehaviour
     //{
     //    Debug.Log("TEST");
     //}
+    public event EventHandler OnAttackEvent;
+
+    public void InvokeOnAttackEvent()
+    {
+        OnAttackEvent?.Invoke(this, EventArgs.Empty);
+    }
+
 }

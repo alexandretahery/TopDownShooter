@@ -52,7 +52,7 @@ public class PlayerMovementController : MonoBehaviour
                 transform.LookAt2D(worldPosition - new Vector2(transform.position.x, transform.position.y));
                 break;
             case Platforme.Mobile:
-                keyBoardController.playerController.enabled = false;
+                keyBoardController.PlayerController.enabled = false;
                 direction = Vector2.up * joystick.Vertical + Vector2.right * joystick.Horizontal;
                 if (direction != Vector2.zero)
                     directionOld = direction;

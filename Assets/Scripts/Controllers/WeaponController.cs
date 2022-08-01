@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    public GameObject weapon;
 
 
-    //private void OnEnable() => EventManager.PlayerShooted += Attack;
+    public GameObject Bullet;
 
-    //private void OnDisable() => EventManager.PlayerShooted -= Attack;
+    public EventManager EventManager;
 
-    //void Attack()
-    //{
-    //    Debug.Log("WeaponController Add");
-    //}
+    private void OnEnable() => EventManager.OnAttackEvent += OnAttackPlayer;
+    private void OnDisable() => EventManager.OnAttackEvent -= OnAttackPlayer;
+
+
+    private void OnAttackPlayer(object sender, EventArgs e)
+    {
+        Debug.Log("ATTACK from WEAPON CTRL");
+        Instantiate(Bullet, transform);
+    }
 }

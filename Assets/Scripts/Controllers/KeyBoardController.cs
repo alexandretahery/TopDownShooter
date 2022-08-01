@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 
 public class KeyBoardController : MonoBehaviour
 {
-    public event EventHandler OnAttackEvent;
-    public PlayerInput playerController;
+    public EventManager EventManager;
+    public PlayerInput PlayerController;
 
     public float Horizontal { get; private set; }
     public float Vertical { get; private set; }
@@ -18,7 +18,6 @@ public class KeyBoardController : MonoBehaviour
 
     private void Start()
     {
-        OnAttackEvent += Testing_OnSpacePressed;
     }
 
     public void OnMovement(InputAction.CallbackContext value)
@@ -29,16 +28,11 @@ public class KeyBoardController : MonoBehaviour
         rawInputMovement = new Vector2(Horizontal, Vertical);
     }
 
-   private void Testing_OnSpacePressed(object sender, EventArgs e)
-    {
-        Debug.Log("Attacked");
-    }
-
     public void OnAttack(InputAction.CallbackContext value)
     {
         if (value.started)
         {
-            OnAttackEvent?.Invoke(this, EventArgs.Empty);
+            EventManager.InvokeOnAttackEvent();
         }
     }
 }
