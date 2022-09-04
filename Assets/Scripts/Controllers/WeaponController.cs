@@ -17,6 +17,7 @@ public class WeaponController : MonoBehaviour
 
     private void OnAttackPlayer(object sender, EventArgs e)
     {
-        Instantiate(Bullet, transform.position, transform.rotation);
+        var bullet = Instantiate(Bullet, transform.position, transform.rotation);
+        bullet.transform.GetComponent<BulletBasicController>().Setup(transform.position);
     }
 }

@@ -18,7 +18,7 @@ public class PlayerMovementController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     [SerializeField]
     private Animator _animator;
-    public AminationModel aminationModel;
+    public AnimationModel aminationModel;
 
     //CAMERA
     [SerializeField]
@@ -31,12 +31,12 @@ public class PlayerMovementController : MonoBehaviour
     {
         direction = Vector2.zero;
         directionOld = Vector2.zero;
-        aminationModel = new AminationModel(_spriteRenderer, _animator);
+        aminationModel = new AnimationModel(_spriteRenderer, _animator);
         Camera.main.orthographicSize = size;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         HandleMouvement(transform);
     }

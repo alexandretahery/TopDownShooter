@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AminationModel
+public class AnimationModel
 {
     [SerializeField]
     private SpriteRenderer spriteRender;
     [SerializeField]
     private Animator animator;
 
-    public AminationModel(SpriteRenderer _spriteRenderer, Animator _animator)
+    public AnimationModel(SpriteRenderer _spriteRenderer, Animator _animator)
     {
         spriteRender = _spriteRenderer;
         animator = _animator;
