@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7763760389981194268}
   - component: {fileID: 6470406592911878896}
+  - component: {fileID: 6212177790633441235}
   m_Layer: 0
   m_Name: bulletBasic Prefab
   m_TagString: Untagged
@@ -131,7 +132,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de98d8358766e7a4089a2b456398d07d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+--- !u!70 &6212177790633441235
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763760389981194269}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &7763760390094075988
 GameObject:
   m_ObjectHideFlags: 0

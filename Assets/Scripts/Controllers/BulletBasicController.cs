@@ -7,8 +7,9 @@ using UnityEngine;
 
 public class BulletBasicController : MonoBehaviour, IProjectileController
 {
-    private float lifeTime = 1f;
-    private float MoveSpeed = 50f;
+    public float DamagePoint = 5;
+    private float lifeTime = 5f;
+    private float moveSpeed = 1f;
     private Vector3 _shootDir;
 
     public void Setup(Vector3 positionInput)
@@ -19,12 +20,12 @@ public class BulletBasicController : MonoBehaviour, IProjectileController
 
     public void Damage()
     {
-        throw new NotImplementedException();
+        Debug.Log("HIT");
     }
 
     public void MoveProjectile()
     {
-        transform.position += _shootDir * MoveSpeed * Time.deltaTime;
+        transform.position += _shootDir * moveSpeed * Time.deltaTime;
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
@@ -32,10 +33,15 @@ public class BulletBasicController : MonoBehaviour, IProjectileController
         }
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Damage();
+        Destroy(gameObject);
+    }
+
     private void FixedUpdate()
     {
         MoveProjectile();
     }
-
 
 }
