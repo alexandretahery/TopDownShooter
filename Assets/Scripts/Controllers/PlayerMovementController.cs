@@ -21,7 +21,7 @@ public class PlayerMovementController : MonoBehaviour
     public AnimationModel aminationModel;
 
     //CAMERA
-    [SerializeField]
+    public Camera Camera;
     public float size;
 
     private Vector2 directionOld;
@@ -48,7 +48,7 @@ public class PlayerMovementController : MonoBehaviour
             case Platforme.PC:
                 joystick.enabled = false;
                 direction = keyBoardController.Direction.normalized;
-                Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector2 worldPosition = Camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 transform.LookAt2D(worldPosition - new Vector2(transform.position.x, transform.position.y));
                 break;
             case Platforme.Mobile:
@@ -63,6 +63,6 @@ public class PlayerMovementController : MonoBehaviour
         }
         aminationModel.SetAnimationSpeed(direction.magnitude * 2);
         transform.position += new Vector3(direction.x, direction.y).normalized * speed * Time.deltaTime;
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y + 3f, -10);
+        Camera.transform.position = new Vector3(transform.position.x, transform.position.y + 3f, -10);
     }
 }

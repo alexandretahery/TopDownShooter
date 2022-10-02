@@ -7,9 +7,12 @@ using UnityEngine;
 
 public class BulletBasicController : MonoBehaviour, IProjectileController
 {
-    public float DamagePoint = 5;
-    private float lifeTime = 5f;
-    private float moveSpeed = 1f;
+    public float DamagePoint;
+
+    [SerializeField]
+    private float lifeTime;
+    [SerializeField]
+    private float moveSpeed;
     private Vector3 _shootDir;
 
     public void Setup(Vector3 positionInput)
@@ -33,11 +36,12 @@ public class BulletBasicController : MonoBehaviour, IProjectileController
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Damage();
         Destroy(gameObject);
     }
+
 
     private void FixedUpdate()
     {
