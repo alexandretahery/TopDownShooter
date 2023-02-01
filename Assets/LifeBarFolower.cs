@@ -10,11 +10,6 @@ public class LifeBarFolower : MonoBehaviour
     [SerializeField]
     private Vector3 Offset;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

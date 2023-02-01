@@ -1,20 +1,16 @@
+using Assets.Scripts.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerLifeCtr : MonoBehaviour
 {
-    [SerializeField]
-    private float _maxPlayerLife;
-
-    [SerializeField]
-    private float PLACEHOLDER_DmgPlayer;
+    private LifeModel _lifePlayer { get; set; }
 
     public LifeFrontCtr LifeFrontCtr;
-
-    private float _actualLife;
 
     private void Start()
     {
@@ -23,12 +19,28 @@ public class PlayerLifeCtr : MonoBehaviour
 
     private void Init()
     {
-        _actualLife = _maxPlayerLife;
+        _lifePlayer = new LifeModel(10f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _actualLife += -PLACEHOLDER_DmgPlayer;
-        LifeFrontCtr.UpdateValueLifeFill(-PLACEHOLDER_DmgPlayer);
+        GameObject objCol = collision.gameObject;
+        if (objCol.tag == "Ennemie")
+        {
+            var zombieCtr = objCol.GetComponent<ZombieCtr>();
+            _lifePlayer.ActualLife += -zombieCtr.EnnemieHit();
+            LifeFrontCtr.UpdateValueLifeFill(-zombieCtr.EnnemieHit());
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        GameObject objCol = collision.gameObject;
+        if (objCol.tag == "Ennemie")
+        {
+            var zombieCtr = objCol.GetComponent<ZombieCtr>();
+            _lifePlayer.ActualLife += -zombieCtr.EnnemieHit();
+            LifeFrontCtr.UpdateValueLifeFill(-zombieCtr.EnnemieHit());
+        }
     }
 }

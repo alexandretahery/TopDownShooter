@@ -10,7 +10,7 @@ public class LifeFrontCtr : MonoBehaviour
     /// References the image that represents the player's life.
     /// </summary>
     [SerializeField]
-    private Image LifeFill;
+    private Image _lifeFill;
 
     /// <summary>
     /// Function that allows to update the player front
@@ -18,7 +18,7 @@ public class LifeFrontCtr : MonoBehaviour
     /// <param name="updateValue">Positive or negative value</param>
     public void UpdateValueLifeFill(float updateValue)
     {
-        LifeFill.fillAmount += updateValue;
+        _lifeFill.fillAmount += updateValue;
     }
 
 }

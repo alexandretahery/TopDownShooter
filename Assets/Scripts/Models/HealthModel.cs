@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
+[Obsolete]
 public class HealthModel
 {
     private float health;
