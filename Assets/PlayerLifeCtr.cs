@@ -24,19 +24,18 @@ public class PlayerLifeCtr : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject objCol = collision.gameObject;
-        if (objCol.tag == "Ennemie")
-        {
-            var zombieCtr = objCol.GetComponent<ZombieCtr>();
-            _lifePlayer.ActualLife += -zombieCtr.EnnemieHit();
-            LifeFrontCtr.UpdateValueLifeFill(-zombieCtr.EnnemieHit());
-        }
+        TakeDamage(collision, "Ennemie");
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        TakeDamage(collision, "Ennemie");
+    }
+
+    private void TakeDamage(Collision2D collision, string tag)
     {
         GameObject objCol = collision.gameObject;
-        if (objCol.tag == "Ennemie")
+        if (objCol.tag == tag)
         {
             var zombieCtr = objCol.GetComponent<ZombieCtr>();
             _lifePlayer.ActualLife += -zombieCtr.EnnemieHit();

@@ -10,5 +10,5 @@ public interface IProjectileController
 {
     void Setup(Vector3 positionInput);
     void MoveProjectile();
-    void Damage();
+    float Damage();
 }

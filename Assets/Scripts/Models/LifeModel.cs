@@ -14,6 +14,7 @@ namespace Assets.Scripts.Models
         public LifeModel(float maxLifeInput) 
         {
             MaxLife = maxLifeInput;
+            ActualLife = MaxLife;
         }
 
     }

@@ -21,9 +21,14 @@ public class BulletBasicController : MonoBehaviour, IProjectileController
         _shootDir = (transform.rotation * Vector3.up).normalized;
     }
 
-    public void Damage()
+    /// <summary>
+    /// When Some projectile hit something call this for apply damage
+    /// </summary>
+    /// <returns>return Damage of the projectil</returns>
+    public float Damage()
     {
         Debug.Log("HIT");
+        return -DamagePoint;
     }
 
     public void MoveProjectile()
